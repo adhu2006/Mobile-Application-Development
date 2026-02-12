@@ -1,0 +1,86 @@
+import { StyleSheet, View, ScrollView, Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+const App = () => {
+  return (
+    <SafeAreaView style={styles.safeArea}>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.scrollContainer}
+        >
+          <View style={styles.container}>   </View>
+        
+        <View style={styles.card}>
+          <Text>Danish</Text>
+        </View>
+          <View style={styles.box1} />
+          <View style={styles.box2} />
+          <View style={styles.box3} />
+          <View style={styles.box1} />
+          <View style={styles.box2} />
+          <View style={styles.box3} />
+          <View style={styles.box1} />
+          <View style={styles.box2} />
+          <View style={styles.box3} />
+        </ScrollView>
+
+        <View style={styles.textContainer}>
+          <Text style={styles.text}>helowwww</Text>
+        </View>
+
+     
+    </SafeAreaView>
+  );
+};
+
+export default App;
+
+const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#dadada',
+  },
+  container: {
+    flex: 1,
+    paddingVertical: 10,
+    paddingHorizontal: 5,
+  },
+  scrollContainer: {
+    gap: 10,
+  },
+  box1: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    backgroundColor: 'red',
+  },
+  box2: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    backgroundColor: 'green',
+  },
+  box3: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    backgroundColor: 'blue',
+  },
+  card: {
+    width: 100,
+    height: 100,
+    borderRadius: 10,
+    padding: 10,
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 10,
+  },
+  textContainer: {
+    marginTop: 20,
+  },
+  text: {
+    color: 'black',
+  },
+});
