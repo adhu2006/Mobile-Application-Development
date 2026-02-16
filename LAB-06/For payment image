@@ -1,0 +1,138 @@
+import React from "react";
+import {
+  View,
+  Text,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  Image
+} from "react-native";
+
+const transferBanks = [
+  { id: "1", name: "Bank Mandiri", img: "https://picsum.photos/50?1" },
+  { id: "2", name: "Bank BCA", img: "https://picsum.photos/50?2" },
+  { id: "3", name: "Bank BNI", img: "https://picsum.photos/50?3" },
+  { id: "4", name: "Bank Mega", img: "https://picsum.photos/50?4" }
+];
+
+const virtualAccounts = [
+  { id: "1", name: "Virtual Account Mandiri", img: "https://picsum.photos/50?5" },
+  { id: "2", name: "Virtual Account BCA", img: "https://picsum.photos/50?6" },
+  { id: "3", name: "Virtual Account BNI", img: "https://picsum.photos/50?7" },
+  { id: "4", name: "Virtual Account Mega", img: "https://picsum.photos/50?8" }
+];
+
+const installments = [
+  { id: "1", name: "Kredivo", img: "https://picsum.photos/50?9" },
+  { id: "2", name: "< 17 Tahun (S&K BERLAKU)", img: "https://picsum.photos/50?10" }
+];
+
+export default function PaymentScreen() {
+  return (
+    <View style={styles.container}>
+
+      {/* Header */}
+      <View style={styles.header}>
+        <Text style={styles.headerText}>Pembayaran</Text>
+      </View>
+
+      {/* Body */}
+      <View style={styles.card}>
+        <ScrollView showsVerticalScrollIndicator={false}>
+
+          {/* Timer */}
+          <Text style={styles.timerText}>
+            Selesaikan pemesanan dalam
+            <Text style={styles.timer}> 00:60:00</Text>
+          </Text>
+
+          {/* Transfer Bank */}
+          <Text style={styles.sectionTitle}>Transfer Bank</Text>
+          {transferBanks.map(item => (
+            <PaymentRow key={item.id} item={item} />
+          ))}
+
+          {/* Virtual Account */}
+          <Text style={styles.sectionTitle}>Virtual Account</Text>
+          {virtualAccounts.map(item => (
+            <PaymentRow key={item.id} item={item} />
+          ))}
+
+          {/* Installments */}
+          <Text style={styles.sectionTitle}>Cicilan Tanpa Kartu Kredit</Text>
+          {installments.map(item => (
+            <PaymentRow key={item.id} item={item} />
+          ))}
+
+        </ScrollView>
+      </View>
+    </View>
+  );
+}
+
+const PaymentRow = ({ item }) => {
+  return (
+    <TouchableOpacity style={styles.row}>
+      <Image source={{ uri: item.img }} style={styles.logo} />
+      <Text style={styles.rowText}>{item.name}</Text>
+      <Text style={styles.arrow}>›</Text>
+    </TouchableOpacity>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#7B2CBF"
+  },
+  header: {
+    padding: 20
+  },
+  headerText: {
+    color: "white",
+    fontSize: 18,
+    fontWeight: "bold"
+  },
+  card: {
+    flex: 1,
+    backgroundColor: "#F2F2F2",
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    padding: 20
+  },
+  timerText: {
+    textAlign: "center",
+    marginBottom: 20
+  },
+  timer: {
+    color: "red",
+    fontWeight: "bold"
+  },
+  sectionTitle: {
+    fontSize: 16,
+    fontWeight: "bold",
+    marginTop: 10,
+    marginBottom: 10
+  },
+  row: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 12
+  },
+  logo: {
+    width: 35,
+    height: 35,
+    borderRadius: 6,
+    marginRight: 12
+  },
+  rowText: {
+    flex: 1,
+    fontSize: 14
+  },
+  arrow: {
+    fontSize: 20,
+    color: "#7B2CBF"
+  }
+});
+
+For payment imag e
