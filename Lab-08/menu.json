@@ -1,0 +1,7 @@
+[
+  { "id": 1, "name": "Paneer Butter Masala", "category": "Veg", "price": 250, "rating": 4.5 },
+  { "id": 2, "name": "Chicken Biryani", "category": "Non-Veg", "price": 300, "rating": 4.7 },
+  { "id": 3, "name": "Cold Coffee", "category": "Beverage", "price": 120, "rating": 4.2 },
+  { "id": 4, "name": "Veg Burger", "category": "Veg", "price": 150, "rating": 4.1 },
+  { "id": 5, "name": "Mutton Curry", "category": "Non-Veg", "price": 420, "rating": 4.6 }
+]
