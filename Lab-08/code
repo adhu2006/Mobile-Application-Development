@@ -1,0 +1,124 @@
+import React from "react";
+import {
+  SafeAreaView,
+  View,
+  Text,
+  FlatList,
+  StyleSheet
+} from "react-native";
+
+export default function App() {
+
+  // 🔹 Local data (instead of menu.json)
+  const menuData = [
+    { id: 1, name: "Paneer Butter Masala", category: "Veg", price: 250, rating: 4.5 },
+    { id: 2, name: "Chicken Biryani", category: "Non-Veg", price: 300, rating: 4.7 },
+    { id: 3, name: "Cold Coffee", category: "Beverage", price: 120, rating: 4.2 },
+    { id: 4, name: "Veg Burger", category: "Veg", price: 150, rating: 4.1 },
+    { id: 5, name: "Mutton Curry", category: "Non-Veg", price: 420, rating: 4.6 }
+  ];
+
+  // 🔹 Category color logic
+  const getCategoryColor = (category) => {
+    switch (category) {
+      case "Veg":
+        return "#d4f8d4"; // light green
+      case "Non-Veg":
+        return "#ffd6d6"; // light red
+      case "Beverage":
+        return "#d6ecff"; // light blue
+      default:
+        return "#f2f2f2";
+    }
+  };
+
+  // 🔹 Render each card
+  const renderItem = ({ item }) => (
+    <View
+      style={[
+        styles.card,
+        { backgroundColor: getCategoryColor(item.category) }
+      ]}
+    >
+      <Text style={styles.foodName}>🍽 {item.name}</Text>
+      <Text style={styles.text}>📂 Category: {item.category}</Text>
+      <Text style={styles.text}>💰 Price: ₹{item.price}</Text>
+      <Text style={styles.text}>⭐ Rating: {item.rating}</Text>
+    </View>
+  );
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={menuData}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id.toString()}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+
+        // ✅ Required components
+        ListHeaderComponent={
+          <Text style={styles.header}>Restaurant Menu</Text>
+        }
+
+        ListFooterComponent={
+          <Text style={styles.footer}>Thank You for Visiting</Text>
+        }
+
+        ItemSeparatorComponent={() => <View style={{ width: 12 }} />}
+
+        ListEmptyComponent={
+          <Text style={styles.empty}>No menu items available</Text>
+        }
+      />
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 20,
+    backgroundColor: "#fff"
+  },
+
+  header: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginHorizontal: 16,
+    alignSelf: "center"
+  },
+
+  footer: {
+    fontSize: 16,
+    marginHorizontal: 16,
+    alignSelf: "center",
+    color: "gray"
+  },
+
+  empty: {
+    textAlign: "center",
+    marginTop: 20,
+    fontSize: 16
+  },
+
+  card: {
+    width: 220,
+    padding: 16,
+    borderRadius: 12,
+    marginVertical: 20,
+    justifyContent: "center",
+    elevation: 3
+  },
+
+  foodName: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 6
+  },
+
+  text: {
+    fontSize: 14,
+    marginBottom: 2
+  }
+});
